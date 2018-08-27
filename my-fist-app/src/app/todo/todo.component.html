@@ -1,4 +1,11 @@
-<div class="list-group" *ngFor="let todoitem of todolist" >
-    <a href="#" class="list-group-item list-group-item-action" [ngClass]="{'active': selectedToDoItem==todoitem.Id}"
-     (click)="onSelected($event,todoitem)" >{{todoitem.todo}}</a>   
-</div>
+<!-- <div class="list-group" *ngFor="let todoitem of todolist" >
+    <div class="list-group-item list-group-item-action" [ngClass]="{'active': selectedToDoItem==todoitem.Id}"
+    (click)="onSelected($event,todoitem)">
+    <span  >{{todoitem.todo}} - {{todoitem.status}} </span>
+    <input type="checkbox" [checked]="todoitem.IsDone">   
+    </div>
+</div> -->
+
+<app-addtodo (taskAdded)="newTaskAdded($event)"></app-addtodo>
+<app-todolist [todolist]="todolist" ></app-todolist>
+

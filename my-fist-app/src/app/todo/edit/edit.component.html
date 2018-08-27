@@ -1,0 +1,18 @@
+
+<div class="cintainer">
+    <div class="row">
+        <div class="col-sm-8">
+            <input type="text" class="form-control"  [(ngModel)]="taskToEdit.todo" />
+        </div>
+        <div class="col-sm-4">
+            <input type="button" class="btn btn-primary" value="Update Task" (click)="onClick(taskToEdit)" />
+        </div>
+        <div class="col-sm-8">
+            <input type="radio" name="status" [value]="true" [(ngModel)]="taskToEdit.IsDone" > Done <br>
+            <input type="radio" name="status" [value]="false" [(ngModel)]="taskToEdit.IsDone"> Not Done
+        </div>
+        <div class="col-sm-4">
+        </div>
+      </div>     
+</div>
+

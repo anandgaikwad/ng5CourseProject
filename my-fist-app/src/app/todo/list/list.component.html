@@ -1,0 +1,52 @@
+<div class="container">
+    <!-- Grid Columns -->
+    <div class="row bg-info">
+        <div class="col-sm-6">ToDo</div>
+        <div class="col-sm">Status</div>
+        <div class="col-sm"></div>
+        <div class="col-sm"></div>
+        <div class="col-sm"></div>
+    </div>
+ <!-- Grid Columns data -->
+    <div class="row bg-light" *ngFor="let todoitem of todolist">
+        <div class="col-sm-6 border">{{todoitem.todo}}</div>
+        <div class="col-sm border"> <span *ngIf="todoitem.IsDone then done else notdone"></span>
+            <ng-template #done>Done</ng-template>
+            <ng-template #notdone>Not Done</ng-template>
+        </div>
+        <div class="col-sm border"> <input type="checkbox" [checked]="todoitem.IsDone" [(ngModel)]="todoitem.IsDone"> </div>
+        <div class="col-sm border"><i class="fa fa-edit" (click)="onSelected(todoitem)" ></i></div>
+        <div class="col-sm border"><i class="fa fa-trash" (click)="onDeleted(todoitem)" ></i></div>
+    </div>
+
+   
+</div>
+<br>
+
+<app-editTodo [taskToEdit]="taskSelected" (taskEdited)="taskupdated($event)" ></app-editTodo>
+
+
+<!-- The Modal -->
+<div class="modal" id="EditTaskModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Modal Heading</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+              <h1> Hello World</h1>
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+      
+          </div>
+        </div>
+      </div>
