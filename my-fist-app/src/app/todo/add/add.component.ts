@@ -1,4 +1,5 @@
-import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ToDoService } from '../../services/to-do.service';
 
 @Component({
   selector: 'app-addtodo',
@@ -7,23 +8,20 @@ import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 })
 export class AddComponent implements OnInit {
 
-  @Output() taskAdded =new EventEmitter<{Id:number, todo:string,  IsDone:boolean}>();
-
-  constructor() { }
+  constructor(private toDoservice:ToDoService) { }
 
   newTaskvalue:string="";
 
   ngOnInit() {
     this.newTaskvalue="";
   }
-  identity:number =5;
-
+  
   onClick() {
-    this.identity+=1;
-    this.taskAdded.emit({
-      Id:this.identity ,
+    this.toDoservice.identity+=1;
+    this.toDoservice.taskAdded({
+      Id:this.toDoservice.identity ,
       todo: this.newTaskvalue,
-      IsDone: true
+      IsDone: false
     });    
     
     this.newTaskvalue="";

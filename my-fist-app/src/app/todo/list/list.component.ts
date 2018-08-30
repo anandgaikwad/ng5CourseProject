@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ToDo } from '../../models/todo';
+import { ToDoService } from '../../services/to-do.service';
 
 @Component({
   selector: 'app-todolist',
@@ -7,37 +9,25 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  @Input() todolist;
-  
-  taskSelected:{}={};
-  constructor() { }
+  constructor(private toDoService:ToDoService ) { }
 
   ngOnInit() {
   }
+
+  todolist:ToDo[]=this.toDoService.todolist;
+  
+  taskSelected:{}={};
 
   onSelected(taskSelected)
   {
   this.taskSelected= Object.assign({}, taskSelected);; 
   }
 
-  taskupdated(task)
-  {      
-    let listTask= this.todolist.filter(x => x.Id == task.Id)[0];
-    listTask.todo=task.todo;
-    listTask.IsDone=task.IsDone;
-  }
-
   onDeleted(taskSelected)
   {  
   if(confirm('You want to delete this task, are you sure?'))
   {
-    this.taskDeleted(taskSelected);
+    this.toDoService.taskDeleted(taskSelected);
   }
-  }
-
-  taskDeleted(task)
-  {      
-    //this.todolist= this.todolist.filter(x => x.Id !== task.Id);
-    this.todolist.splice(this.todolist.indexOf(task), 1);
   }
 }

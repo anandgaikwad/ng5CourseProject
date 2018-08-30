@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { ToDoService } from '../../services/to-do.service';
 
 @Component({
   selector: 'app-editTodo',
@@ -8,15 +9,14 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 export class EditComponent implements OnInit {
   
   @Input() taskToEdit:{}={};
-  @Output() taskEdited =new EventEmitter<{Id:number, todo:string,  IsDone:boolean}>();
-  constructor() { }
 
-  ngOnInit() {
-    
+  constructor(private toDoService:ToDoService ) { }
+
+  ngOnInit() {    
   }   
   
   onClick(taskToEdit) {     
-    this.taskEdited.emit(taskToEdit);
-    //this.taskToEdit={};
+    this.toDoService.taskupdated(taskToEdit);
+    this.taskToEdit={};
   }
 }
