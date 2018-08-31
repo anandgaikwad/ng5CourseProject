@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { ToDoService } from '../../services/to-do.service';
+
 
 @Component({
   selector: 'app-addtodo',
@@ -8,7 +11,7 @@ import { ToDoService } from '../../services/to-do.service';
 })
 export class AddComponent implements OnInit {
 
-  constructor(private toDoservice:ToDoService) { }
+  constructor(private toDoservice:ToDoService, private router:Router) { }
 
   newTaskvalue:string="";
 
@@ -25,6 +28,7 @@ export class AddComponent implements OnInit {
     });    
     
     this.newTaskvalue="";
+    this.router.navigate(['todo']);
   }
 
 }

@@ -32,4 +32,14 @@ export class ToDoService {
     //this.todolist= this.todolist.filter(x => x.Id !== task.Id);
     this.todolist.splice(this.todolist.indexOf(task), 1);
   }
+  
+  getToDo(id: number): ToDo {
+
+    // var toDo = this.todos.find((o) => {
+    //   return o.id == id;
+    // });
+    //return toDo;
+
+    return this.todolist.find( o => o.Id == id );
+  }
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { ToDo } from '../../models/todo';
 import { ToDoService } from '../../services/to-do.service';
 
@@ -9,25 +11,23 @@ import { ToDoService } from '../../services/to-do.service';
 })
 export class ListComponent implements OnInit {
 
-  constructor(private toDoService:ToDoService ) { }
+  constructor(private toDoService: ToDoService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  todolist:ToDo[]=this.toDoService.todolist;
-  
-  taskSelected:{}={};
+  todolist: ToDo[] = this.toDoService.todolist;
 
-  onSelected(taskSelected)
-  {
-  this.taskSelected= Object.assign({}, taskSelected);; 
+  taskSelected: {} = {};
+
+  onSelected(taskSelected) {
+    this.taskSelected = Object.assign({}, taskSelected);;
+    this.router.navigate(['/todo', 'edit', taskSelected.Id]);
   }
 
-  onDeleted(taskSelected)
-  {  
-  if(confirm('You want to delete this task, are you sure?'))
-  {
-    this.toDoService.taskDeleted(taskSelected);
-  }
+  onDeleted(taskSelected) {
+    if (confirm('You want to delete this task, are you sure?')) {
+      this.toDoService.taskDeleted(taskSelected);
+    }
   }
 }
