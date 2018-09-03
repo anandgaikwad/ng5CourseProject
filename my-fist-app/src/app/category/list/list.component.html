@@ -1,0 +1,33 @@
+ 
+<div class="container">
+  <div class="row">
+     
+          <div class="div col-6">
+                  <h1>Category List </h1> 
+                  <div class="text-right" ><a  [routerLink]="'/category/add'" > <i class="fa fa-plus">Add New</i></a></div>
+                  <div class="container">
+                      <!-- Grid Columns -->
+                      <div class="row bg-info">
+                          <div class="col-sm-1">ID</div>
+                          <div class="col-sm">Category</div>
+                          <div class="col-sm"></div>                                  
+                      </div>
+                      <!-- Grid Columns data -->
+                      <div class="row bg-light" *ngFor="let cat of categoryList">
+                          <div class="col-sm-1 border">{{cat.Id}}</div>
+                          <div class="col-sm border">{{cat.CategoryName}}</div>
+                          <div class="col-sm border">
+                            <div class="row">                                
+                                <div class="col-md-2"> <i class="fa fa-edit" (click)="onSelected(cat)"></i></div>
+                                <div class="col-md-2"> <i class="fa fa-trash" (click)="onDeleted(cat)"></i></div>
+                            </div>  
+                        </div>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="col-6">
+                  <router-outlet></router-outlet>
+              </div>                
+  </div>
+</div>

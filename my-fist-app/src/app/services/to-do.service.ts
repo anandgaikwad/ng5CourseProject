@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
 import { ToDo } from '../models/todo';
+import { Category } from '../models/category';
+import { CategoryService } from './category.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ToDoService {
 
-  constructor() { }
+  constructor(private categoryService:CategoryService) { }
 
-  todolist=[new ToDo(1,'Create new components',true),
-            new ToDo(2,'Create example of property data binding',true),
-            new ToDo(3,'Create example of tow-way data binding',true),
-            new ToDo(4,'Create Child components',true),
-            new ToDo(5,'Link Child/multiple components',true)];
+  defaultCategory:Category=this.categoryService.getDefaultCategory();
+
+  todolist=[new ToDo(1,'Create new components',true,this.defaultCategory),
+            new ToDo(2,'Create example of property data binding',true,this.defaultCategory),
+            new ToDo(3,'Create example of tow-way data binding',true,this.defaultCategory),
+            new ToDo(4,'Create Child components',true,this.defaultCategory),
+            new ToDo(5,'Link Child/multiple components',true,this.defaultCategory)];
 
   identity:number =5;
 

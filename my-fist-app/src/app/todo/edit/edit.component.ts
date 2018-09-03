@@ -16,11 +16,11 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {    
     this.id=this.route.snapshot.params['id'];
-    this.taskToEdit=this.toDoService.getToDo(this.id);
+    this.taskToEdit=Object.assign({},this.toDoService.getToDo(this.id));
 
     this.route.params.subscribe((params:Params)=>{
       this.id=params['id'];
-      this.taskToEdit=this.toDoService.getToDo(this.id);
+      this.taskToEdit=Object.assign({},this.toDoService.getToDo(this.id));
     });
 
   }   

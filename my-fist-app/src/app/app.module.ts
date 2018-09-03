@@ -9,7 +9,11 @@ import { TodoComponent } from './todo/todo.component';
 import { AddComponent } from './todo/add/add.component';
 import { ListComponent } from './todo/list/list.component';
 import { AngularFontAwesomeModule} from 'angular-font-awesome';
-import { EditComponent } from './todo/edit/edit.component'
+import { EditComponent } from './todo/edit/edit.component';
+import { CategoryComponent } from './category/category.component'
+import { AddCatComponent } from './category/add/add.component';
+import { EditCatComponent } from './category/edit/edit.component';
+import { ListCatComponent } from './category/list/list.component';
 
 const appRoutes:Routes =[
   {
@@ -21,16 +25,18 @@ const appRoutes:Routes =[
     component: ListComponent,
     children:
     [
-      {
-        path:'add',
-        component: AddComponent,
-      },
-      {
-        path:'edit/:id',
-        component: EditComponent    
-      }
+      { path:'add', component: AddComponent },
+      { path:'edit/:id', component: EditComponent }
     ]
   },
+  {
+    path:'category', component:ListCatComponent,
+    children:
+    [
+      { path:'add', component:AddCatComponent  },
+      { path:'edit/:id', component:EditCatComponent }     
+    ]
+  }
   
 
 ];
@@ -43,7 +49,11 @@ const appRoutes:Routes =[
     TodoComponent,
     AddComponent,
     ListComponent,
-    EditComponent
+    EditComponent,
+    AddCatComponent,
+    ListCatComponent,
+    EditCatComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
