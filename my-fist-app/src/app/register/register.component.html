@@ -1,0 +1,41 @@
+<h1>
+  Register Here
+</h1>
+<form [formGroup]="userRegistrationForm"  (ngSubmit)="registerUser()" >
+  <div class="form-group">
+    <label for="ctrlUserName" >User Name</label>
+    <input type="text" id="ctrlUserName" formControlName ="userName" required class="form-control">
+    <div class="text-danger" *ngIf="f.userName.errors && f.userName.touched">
+      <div  *ngIf="f.userName.errors.required">Email is required</div>
+  </div>
+  </div>
+  <div class="form-group">
+    <label>E-mail</label>
+    <input type="email" class="form-control" formControlName ="userEmail">
+    <div class="text-danger" *ngIf="f.userEmail.errors && f.userEmail.touched">
+      <div  *ngIf="f.userEmail.errors.required">Email is required</div>
+      <div *ngIf="f.userEmail.errors.email">Email must be a valid email address</div>
+  </div>
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" class="form-control" formControlName ="userPassword">
+    <div class="text-danger" *ngIf="!f.userPassword.valid && f.userPassword.touched">
+        <div *ngIf="f.userPassword.errors.minlength">Password must be of length 6</div>  
+      <div *ngIf="f.userPassword.required">Password is required</div>      
+  </div>
+  </div>
+  <div class="form-group">
+    <label>Confirm Password</label>
+    <input type="password" class="form-control" formControlName ="userConfirmPassword">
+    <div class="text-danger" *ngIf="!f.userConfirmPassword.valid && f.userConfirmPassword.touched">
+      <div *ngIf="f.userConfirmPassword.errors">{{f.userConfirmPassword.errors.message}}</div>      
+  </div>
+  <div class="text-info" *ngIf="f.userConfirmPassword.pending && f.userConfirmPassword.touched">
+    <div>Checking...</div>
+  </div>
+  </div>
+  <div class="form-group">
+    <input type="submit" class="btn btn-primary" [ngClass]= "!userRegistrationForm.valid? 'disabled':''" value="Register"  />
+  </div>
+</form>

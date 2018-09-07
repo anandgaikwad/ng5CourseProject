@@ -1,9 +1,18 @@
-<h1> Create New Task</h1>
-    <div class="row">
-        <div class="col-sm-8">
-            <input type="text" required class="form-control" [(ngModel)]="newTaskvalue" />
-        </div>
-        <div class="col-sm-4">
+
+    <h1> Add Task</h1>
+
+    <div class="form-group">
+        <label for="todo-to-add">To Do</label>
+        <input type="text" id="todo-to-add" class="form-control" [(ngModel)]="newTaskvalue" />
+    </div>
+    
+    <div class="form-group">
+        <label for="todo-to-category">Category</label>
+        <select Id="todo-to-category" class="form-control" [(ngModel)]="selectedcategory">
+            <option [value]="cat.Id" *ngFor="let cat of categoryList"> {{cat.CategoryName}}</option>
+        </select>
+    </div>    
+    
+    <div class="form-group">
             <input type="button" class="btn btn-primary" value="Add Task" (click)="onClick()"  />
-        </div>
     </div>

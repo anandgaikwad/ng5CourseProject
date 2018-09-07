@@ -8,6 +8,7 @@ export class CategoryService {
 
   constructor() { 
     this.addCategory(new Category(1,"Inbox"));
+    this.addCategory(new Category(2,"Outbox"));
   }
 
   categoryIdentity:number=0;

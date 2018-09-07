@@ -13,6 +13,9 @@
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <a class="nav-link disabled" [routerLink]="'category'">Category</a>
         </li>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a class="nav-link disabled" [routerLink]="'register'">Register</a>
+        </li>
       
       </ul>
       <!-- <form class="form-inline mt-2 mt-md-0">
@@ -20,5 +23,9 @@
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>  -->
     </div>
+    <div>
+      <code>observable|async</code>:
+      <b class="text-white">  Time: {{ time  | async | date:'medium' }} </b>
+      </div>
   </div>
 </nav>

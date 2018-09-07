@@ -8,23 +8,24 @@
                         <!-- Grid Columns -->
                         <div class="row bg-info">
                             <div class="col-sm-1">ID</div>
-                            <div class="col-sm-6">ToDo</div>
-                            <div class="col-sm">Status</div>
+                            <div class="col-sm-6">ToDo</div>                           
+                            <div class="col-sm">Category</div>
+                            <!-- <div class="col-sm">Status</div> -->
                             <div class="col-sm"></div>         
                         </div>
                         <!-- Grid Columns data -->
                         <div class="row bg-light" *ngFor="let todoitem of todolist">
                             <div class="col-sm-1 border">{{todoitem.Id}}</div>
-                            <div class="col-sm-6 border">{{todoitem.todo}}</div>
-                            <div class="col-sm border"> <span *ngIf="todoitem.IsDone then done else notdone"></span>
+                            <div class="col-sm-6 border">{{todoitem.todo}}</div>                          
+                            <div class="col-sm border">{{todoitem.category.CategoryName}}</div>
+                            <!-- <div class="col-sm border">                                   
+                                <span *ngIf="todoitem.IsDone then done else notdone"></span>
                                 <ng-template #done>Done</ng-template>
                                 <ng-template #notdone>Not Done</ng-template>
-                            </div>
+                            </div> -->
                             <div class="col-sm border">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <input type="checkbox" [checked]="todoitem.IsDone" [(ngModel)]="todoitem.IsDone">
-                                    </div>
+                                <div class="row">                         
+                                    <div class="col-md-2"> <input type="checkbox"  disabled [checked]="todoitem.IsDone" [(ngModel)]="todoitem.IsDone"></div>          
                                     <div class="col-md-2"> <i class="fa fa-edit" (click)="onSelected(todoitem)"></i></div>
                                     <div class="col-md-2"> <i class="fa fa-trash" (click)="onDeleted(todoitem)"></i></div>
                                 </div>  

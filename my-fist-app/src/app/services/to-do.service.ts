@@ -29,6 +29,7 @@ export class ToDoService {
     let listTask = this.todolist.filter(x => x.Id == task.Id)[0];
     listTask.todo = task.todo;
     listTask.IsDone = task.IsDone;
+    listTask.category = task.category;
   }
             
   taskDeleted(task)

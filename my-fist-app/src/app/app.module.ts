@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -14,6 +14,7 @@ import { CategoryComponent } from './category/category.component'
 import { AddCatComponent } from './category/add/add.component';
 import { EditCatComponent } from './category/edit/edit.component';
 import { ListCatComponent } from './category/list/list.component';
+import { RegisterComponent } from './register/register.component';
 
 const appRoutes:Routes =[
   {
@@ -36,8 +37,10 @@ const appRoutes:Routes =[
       { path:'add', component:AddCatComponent  },
       { path:'edit/:id', component:EditCatComponent }     
     ]
-  }
-  
+  },
+  {
+    path:'register', component:RegisterComponent    
+  } 
 
 ];
 
@@ -53,13 +56,15 @@ const appRoutes:Routes =[
     AddCatComponent,
     ListCatComponent,
     EditCatComponent,
-    CategoryComponent
+    CategoryComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AngularFontAwesomeModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

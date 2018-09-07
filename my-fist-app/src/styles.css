@@ -4,3 +4,17 @@ body {
     min-height: 75rem;
     padding-top: 4.5rem;
   }
+
+  input.ng-pending.ng-touched {
+    border: 1px solid #00F;
+  }
+  
+  input.ng-invalid.ng-touched {
+    border: 1px solid #F00;
+  }
+  
+  input.ng-valid.ng-touched {
+    border: 1px solid #0F0;
+  }
+  
+  
